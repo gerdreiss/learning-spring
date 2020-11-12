@@ -1,6 +1,6 @@
-package com.example.demo.payroll.controller;
+package com.github.gerdreiss.payroll.controller;
 
-import com.example.demo.payroll.entity.Employee;
+import com.github.gerdreiss.payroll.entity.Employee;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

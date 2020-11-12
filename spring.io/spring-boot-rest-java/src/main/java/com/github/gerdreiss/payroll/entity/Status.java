@@ -1,4 +1,4 @@
-package com.example.demo.payroll.entity;
+package com.github.gerdreiss.payroll.entity;
 
 public enum Status {
 

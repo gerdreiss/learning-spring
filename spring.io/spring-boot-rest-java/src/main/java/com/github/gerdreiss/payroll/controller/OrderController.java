@@ -1,9 +1,9 @@
-package com.example.demo.payroll.controller;
+package com.github.gerdreiss.payroll.controller;
 
-import com.example.demo.payroll.entity.Order;
-import com.example.demo.payroll.entity.Status;
-import com.example.demo.payroll.exception.OrderNotFoundException;
-import com.example.demo.payroll.persistence.OrderRepository;
+import com.github.gerdreiss.payroll.entity.Order;
+import com.github.gerdreiss.payroll.entity.Status;
+import com.github.gerdreiss.payroll.exception.OrderNotFoundException;
+import com.github.gerdreiss.payroll.persistence.OrderRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;

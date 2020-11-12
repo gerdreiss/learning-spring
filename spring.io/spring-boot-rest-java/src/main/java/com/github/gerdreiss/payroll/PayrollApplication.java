@@ -1,4 +1,4 @@
-package com.example.demo.payroll;
+package com.github.gerdreiss.payroll;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

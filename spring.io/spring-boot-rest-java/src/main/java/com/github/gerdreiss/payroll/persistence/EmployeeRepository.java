@@ -1,6 +1,6 @@
-package com.example.demo.payroll.persistence;
+package com.github.gerdreiss.payroll.persistence;
 
-import com.example.demo.payroll.entity.Employee;
+import com.github.gerdreiss.payroll.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

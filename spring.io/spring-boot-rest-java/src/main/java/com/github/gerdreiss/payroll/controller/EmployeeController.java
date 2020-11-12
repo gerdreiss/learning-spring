@@ -1,8 +1,8 @@
-package com.example.demo.payroll.controller;
+package com.github.gerdreiss.payroll.controller;
 
-import com.example.demo.payroll.exception.EmployeeNotFoundException;
-import com.example.demo.payroll.entity.Employee;
-import com.example.demo.payroll.persistence.EmployeeRepository;
+import com.github.gerdreiss.payroll.exception.EmployeeNotFoundException;
+import com.github.gerdreiss.payroll.entity.Employee;
+import com.github.gerdreiss.payroll.persistence.EmployeeRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;

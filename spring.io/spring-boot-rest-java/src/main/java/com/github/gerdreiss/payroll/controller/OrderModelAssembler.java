@@ -1,9 +1,9 @@
-package com.example.demo.payroll.controller;
+package com.github.gerdreiss.payroll.controller;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
-import com.example.demo.payroll.entity.Order;
-import com.example.demo.payroll.entity.Status;
+import com.github.gerdreiss.payroll.entity.Order;
+import com.github.gerdreiss.payroll.entity.Status;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

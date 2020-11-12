@@ -1,4 +1,4 @@
-package com.example.demo.payroll.exception;
+package com.github.gerdreiss.payroll.exception;
 
 public class OrderNotFoundException extends RuntimeException {
     public OrderNotFoundException(Long id) {

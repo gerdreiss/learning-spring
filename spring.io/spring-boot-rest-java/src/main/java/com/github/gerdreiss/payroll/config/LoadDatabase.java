@@ -1,10 +1,10 @@
-package com.example.demo.payroll.config;
+package com.github.gerdreiss.payroll.config;
 
-import com.example.demo.payroll.entity.Employee;
-import com.example.demo.payroll.entity.Order;
-import com.example.demo.payroll.entity.Status;
-import com.example.demo.payroll.persistence.EmployeeRepository;
-import com.example.demo.payroll.persistence.OrderRepository;
+import com.github.gerdreiss.payroll.entity.Employee;
+import com.github.gerdreiss.payroll.entity.Order;
+import com.github.gerdreiss.payroll.entity.Status;
+import com.github.gerdreiss.payroll.persistence.EmployeeRepository;
+import com.github.gerdreiss.payroll.persistence.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

@@ -1,6 +1,6 @@
-package com.example.demo.payroll.controller;
+package com.github.gerdreiss.payroll.controller;
 
-import com.example.demo.payroll.exception.EmployeeNotFoundException;
+import com.github.gerdreiss.payroll.exception.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
