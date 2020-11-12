@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github.gerdress</groupId>
-	<artifactId>spring-boot-rest</artifactId>
+	<artifactId>spring-boot-rest-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-rest</name>
+	<name>spring-boot-rest-service</name>
 	<description>REST project for Spring Boot</description>
 
 	<properties>

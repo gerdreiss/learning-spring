@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github.gerdreiss</groupId>
-	<artifactId>spring-boot-netflix-eureka</artifactId>
+	<artifactId>spring-boot-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-netflix-eureka</name>
-	<description>Netflix stack with Spring boot</description>
+	<name>spring-boot-eureka-server</name>
+	<description>Spring Boot with Eureka Server</description>
 
 	<properties>
 		<java.version>11</java.version>
