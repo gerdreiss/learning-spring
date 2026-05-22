@@ -6,3 +6,4 @@
 * Dimitr.im 
     * [Using the Netflix stack with Spring boot: Eureka](https://dimitr.im/using-the-netflix-stack-with-spring-boot-eureka)
     * [Mastering Spring boot Actuator](https://dimitr.im/mastering-spring-boot-actuator)
+    * [Spring Boot 4, Spring 7 & Hibernate for Beginners](https://www.udemy.com/course/spring-hibernate-tutorial/)
