@@ -1,21 +1,40 @@
 spring:
   application:
     name: actuator-demo
+  security:
+    user:
+      name: admin
+      password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo
+    username: scott
+    password: tiger
+
 logging:
   level:
     org.apache.coyote: DEBUG
     org.springframework.web: DEBUG
+
 management:
   endpoints:
     web:
       exposure:
-#        exclude: info
+        exclude: beans
         include: '*'
+      base-path: /actuator
   info:
     env:
       enabled: true
+
 info:
   app:
     name: Actuator Demo App
     description: A demonstration of Spring Boot Actuator capabilities
     version: 1.0.0
+
+server:
+  port: 8000
+  servlet:
+    context-path: /demo
+    session:
+      timeout: 15m
