@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: actuator-demo
+logging:
+  level:
+    org.apache.coyote: DEBUG
+    org.springframework.web: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+#        exclude: info
+        include: '*'
+  info:
+    env:
+      enabled: true
+info:
+  app:
+    name: Actuator Demo App
+    description: A demonstration of Spring Boot Actuator capabilities
+    version: 1.0.0
