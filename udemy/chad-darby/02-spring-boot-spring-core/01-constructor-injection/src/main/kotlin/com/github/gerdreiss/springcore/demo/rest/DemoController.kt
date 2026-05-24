@@ -12,7 +12,7 @@ class DemoController {
     private val coach: Coach
 
     @Autowired
-    constructor(@Qualifier("trackCoach") coach: Coach) {
+    constructor(/*@Qualifier("trackCoach")*/ coach: Coach) {
         this.coach = coach
     }
 
