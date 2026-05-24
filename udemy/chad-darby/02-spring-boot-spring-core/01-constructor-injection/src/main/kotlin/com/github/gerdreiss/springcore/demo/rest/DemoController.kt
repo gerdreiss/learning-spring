@@ -2,6 +2,7 @@ package com.github.gerdreiss.springcore.demo.rest
 
 import com.github.gerdreiss.springcore.demo.common.Coach
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -11,7 +12,7 @@ class DemoController {
     private val coach: Coach
 
     @Autowired
-    constructor(coach: Coach) {
+    constructor(@Qualifier("trackCoach") coach: Coach) {
         this.coach = coach
     }
 
