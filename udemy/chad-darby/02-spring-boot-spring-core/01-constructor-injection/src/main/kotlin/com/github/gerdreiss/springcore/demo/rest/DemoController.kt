@@ -12,6 +12,7 @@ class DemoController {
     private val coach: Coach
 
     @Autowired
+    // Qualifier is not necessary anymore since the trackCoach is annotated as Primary
     constructor(/*@Qualifier("trackCoach")*/ coach: Coach) {
         this.coach = coach
     }
