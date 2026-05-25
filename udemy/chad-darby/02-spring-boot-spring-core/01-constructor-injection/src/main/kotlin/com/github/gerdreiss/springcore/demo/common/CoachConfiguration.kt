@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class CoachConfiguration {
-    @Bean
+    @Bean("aquatic")
     fun swimCoach(): Coach = SwimCoach(DateProvider())
 }

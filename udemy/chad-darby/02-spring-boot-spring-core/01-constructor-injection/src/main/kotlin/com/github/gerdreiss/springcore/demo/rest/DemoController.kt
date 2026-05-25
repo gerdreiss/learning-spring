@@ -12,7 +12,7 @@ class DemoController {
     private val coach: Coach
 
     @Autowired
-    constructor(@Qualifier("swimCoach") coach: Coach) {
+    constructor(@Qualifier("aquatic") coach: Coach) {
         this.coach = coach
     }
 
