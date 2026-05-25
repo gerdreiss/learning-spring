@@ -19,4 +19,8 @@ class StudentDAOImpl : StudentDAO {
     override fun save(student: Student) {
         entityManager.persist(student)
     }
+
+    override fun findById(id: Int): Student {
+        return entityManager.find(Student::class.java, id)
+    }
 }
