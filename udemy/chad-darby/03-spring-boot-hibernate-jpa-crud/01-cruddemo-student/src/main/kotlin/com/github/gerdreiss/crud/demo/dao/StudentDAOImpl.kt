@@ -37,4 +37,23 @@ class StudentDAOImpl : StudentDAO {
             .resultList
     }
 
+    @Transactional
+    override fun update(student: Student) {
+        entityManager.merge(student)
+    }
+
+    @Transactional
+    override fun delete(student: Student) {
+//        this.entityManager.remove(student)
+        this.entityManager
+            .createQuery("delete from Student where id = :data")
+            .setParameter("data", student.id)
+            .executeUpdate()
+    }
+
+    @Transactional
+    override fun deleteAll(): Int {
+        return this.entityManager.createQuery("delete from Student").executeUpdate()
+    }
+
 }

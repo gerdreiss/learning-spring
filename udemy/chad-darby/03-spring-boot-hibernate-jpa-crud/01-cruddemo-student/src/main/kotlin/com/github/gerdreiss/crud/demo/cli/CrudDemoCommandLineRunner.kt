@@ -4,6 +4,7 @@ import com.github.gerdreiss.crud.demo.dao.StudentDAO
 import com.github.gerdreiss.crud.demo.entity.Student
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
+import kotlin.time.Duration.Companion.seconds
 
 @Component
 class CrudDemoCommandLineRunner : CommandLineRunner {
@@ -18,6 +19,9 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
         readStudentById()
         readAllStudents()
         readStudentByLastName()
+        updateStudent()
+        removeStudent()
+        deleteAll()
     }
 
     private fun createStudentList() {
@@ -35,16 +39,37 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
     }
 
     private fun readStudentById() {
-        val student = this.studentDAO.findById(1)
-        println("Found student: $student")
+        this.studentDAO.findById(10)?.let { println("Found student: $it") }
     }
-
 
     private fun readAllStudents() {
         this.studentDAO.findAll().forEach { println(it) }
     }
 
     private fun readStudentByLastName() {
-        this.studentDAO.findByLastName("Doe").forEach { println(it) }
+        this.studentDAO.findByLastName("Doe").forEach { println("Found student: $it") }
+    }
+
+    private fun updateStudent() {
+        this.studentDAO.findAll()
+            .firstOrNull()
+            ?.copy(lastName = "Boe")
+            ?.let {
+                this.studentDAO.update(it)
+                println("Updated student: $it")
+            }
+    }
+
+    private fun removeStudent() {
+        this.studentDAO.findAll()
+            .firstOrNull()
+            ?.let {
+                this.studentDAO.delete(it)
+                println("Deleted student: $it")
+            }
+    }
+
+    private fun deleteAll() {
+        this.studentDAO.deleteAll().let { println("Deleted $it students") }
     }
 }
