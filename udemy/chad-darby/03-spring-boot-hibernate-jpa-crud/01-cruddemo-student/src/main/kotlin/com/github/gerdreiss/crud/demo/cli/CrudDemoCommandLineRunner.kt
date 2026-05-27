@@ -4,7 +4,6 @@ import com.github.gerdreiss.crud.demo.dao.StudentDAO
 import com.github.gerdreiss.crud.demo.entity.Student
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
-import kotlin.time.Duration.Companion.seconds
 
 @Component
 class CrudDemoCommandLineRunner : CommandLineRunner {
@@ -15,16 +14,16 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
     }
 
     override fun run(vararg args: String) {
-        createStudentList()
-        readStudentById()
+        val created = createStudentList()
+        readStudentById(created.random().id!!)
         readAllStudents()
-        readStudentByLastName()
+        readStudentByLastName(created.random().lastName)
         updateStudent()
         removeStudent()
         deleteAll()
     }
 
-    private fun createStudentList() {
+    private fun createStudentList(): List<Student> {
         println("Creating new student objects...")
         val student1 = Student("Paul", "Doe", "paul@doe.com")
         val student2 = Student("Jake", "Foe", "jake@foe.com")
@@ -36,24 +35,26 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
         studentDAO.save(student3)
 
         println("Saved the students. Generated ids: ${student1.id}, ${student2.id}, ${student3.id}")
+
+        return listOf(student1, student2, student3)
     }
 
-    private fun readStudentById() {
-        this.studentDAO.findById(10)?.let { println("Found student: $it") }
+    private fun readStudentById(id: Int) {
+        this.studentDAO.findById(id)?.let { println("Found student: $it") }
     }
 
     private fun readAllStudents() {
         this.studentDAO.findAll().forEach { println(it) }
     }
 
-    private fun readStudentByLastName() {
-        this.studentDAO.findByLastName("Doe").forEach { println("Found student: $it") }
+    private fun readStudentByLastName(lastName: String) {
+        this.studentDAO.findByLastName(lastName).forEach { println("Found student: $it") }
     }
 
     private fun updateStudent() {
         this.studentDAO.findAll()
-            .firstOrNull()
-            ?.copy(lastName = "Boe")
+            .randomOrNull()
+            ?.copy(lastName = "Random")
             ?.let {
                 this.studentDAO.update(it)
                 println("Updated student: $it")

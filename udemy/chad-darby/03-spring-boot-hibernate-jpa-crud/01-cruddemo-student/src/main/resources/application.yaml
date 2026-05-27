@@ -1,3 +1,5 @@
+kind: Application
+
 spring:
   application:
     name: crud-demo
@@ -7,7 +9,13 @@ spring:
     url: jdbc:mysql://localhost:3306/student_tracker
     username: springstudent
     password: springstudent
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 
 logging:
   level:
     root: warn
+    org.hibernate:
+      SQL: debug
+      orm.jdbc.bind: trace

@@ -7,6 +7,7 @@ import jakarta.persistence.*
 data class Student(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     val id: Int? = null,
 
     @Column(name = "first_name")
