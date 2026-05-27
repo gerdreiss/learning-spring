@@ -20,7 +20,21 @@ class StudentDAOImpl : StudentDAO {
         entityManager.persist(student)
     }
 
-    override fun findById(id: Int): Student {
+    override fun findById(id: Int): Student? {
         return entityManager.find(Student::class.java, id)
     }
+
+    override fun findAll(): List<Student> {
+        return entityManager
+            .createQuery("from Student", Student::class.java)
+            .resultList
+    }
+
+    override fun findByLastName(name: String): List<Student> {
+        return entityManager
+            .createQuery("from Student where lastName = :data", Student::class.java)
+            .setParameter("data", name)
+            .resultList
+    }
+
 }

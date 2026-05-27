@@ -14,15 +14,17 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
     }
 
     override fun run(vararg args: String) {
-//        createStudentList()
-        readStudent()
+        createStudentList()
+        readStudentById()
+        readAllStudents()
+        readStudentByLastName()
     }
 
     private fun createStudentList() {
         println("Creating new student objects...")
-        val student1: Student = Student("Paul", "Doe", "paul@doe.com")
-        val student2: Student = Student("Jake", "Foe", "jake@foe.com")
-        val student3: Student = Student("John", "Low", "john@low.com")
+        val student1 = Student("Paul", "Doe", "paul@doe.com")
+        val student2 = Student("Jake", "Foe", "jake@foe.com")
+        val student3 = Student("John", "Low", "john@low.com")
 
         println("Saving the students...")
         studentDAO.save(student1)
@@ -32,8 +34,17 @@ class CrudDemoCommandLineRunner : CommandLineRunner {
         println("Saved the students. Generated ids: ${student1.id}, ${student2.id}, ${student3.id}")
     }
 
-    private fun readStudent() {
+    private fun readStudentById() {
         val student = this.studentDAO.findById(1)
-        println(student)
+        println("Found student: $student")
+    }
+
+
+    private fun readAllStudents() {
+        this.studentDAO.findAll().forEach { println(it) }
+    }
+
+    private fun readStudentByLastName() {
+        this.studentDAO.findByLastName("Doe").forEach { println(it) }
     }
 }
