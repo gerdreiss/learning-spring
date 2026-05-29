@@ -17,8 +17,8 @@ class EmployeeController(val employeeService: EmployeeService) {
             .let { employee ->
                 if (employee == null)
                     throw EmployeeNotFoundException("Employee with ID $id not found")
-
-                return EmployeeDTO(employee.firstName, employee.lastName, employee.email)
+                else
+                    EmployeeDTO(employee.firstName, employee.lastName, employee.email)
             }
 
     @PostMapping("/employees")
@@ -33,7 +33,13 @@ class EmployeeController(val employeeService: EmployeeService) {
 
     @PutMapping("/employees/{id}")
     fun update(@PathVariable id: Int, @RequestBody employee: EmployeeDTO) =
-        employeeService.save(Employee(id, employee.firstName, employee.lastName, employee.email))
+        employeeService.exists(id)
+            .let { exists ->
+                if (exists)
+                    employeeService.save(Employee(id, employee.firstName, employee.lastName, employee.email))
+                else
+                    throw EmployeeNotFoundException("Employee with ID $id not found")
+            }
 
     @DeleteMapping("/employees/{id}")
     fun delete(@PathVariable id: Int) = employeeService.delete(id)

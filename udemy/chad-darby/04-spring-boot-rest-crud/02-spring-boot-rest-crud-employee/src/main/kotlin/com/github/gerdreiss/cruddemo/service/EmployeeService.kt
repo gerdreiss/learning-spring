@@ -7,4 +7,5 @@ interface EmployeeService {
     fun findById(id: Int): Employee?
     fun save(employee: Employee): Employee?
     fun delete(id: Int)
+    fun exists(id: Int): Boolean
 }
