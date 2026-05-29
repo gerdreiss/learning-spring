@@ -8,7 +8,7 @@ data class Employee(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Int?,
+    val id: Int = 0,
 
     @Column(name = "first_name")
     val firstName: String,
@@ -18,6 +18,4 @@ data class Employee(
 
     @Column(name = "email")
     val email: String,
-) {
-    constructor(firstName: String, lastName: String, email: String) : this(null, firstName, lastName, email) {}
-}
+)
