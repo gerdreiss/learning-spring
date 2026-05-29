@@ -4,10 +4,10 @@ import com.github.gerdreiss.cruddemo.dto.EmployeeDTO
 import com.github.gerdreiss.cruddemo.entity.Employee
 import com.github.gerdreiss.cruddemo.service.EmployeeService
 import org.springframework.web.bind.annotation.*
-import tools.jackson.databind.ObjectMapper
+import tools.jackson.databind.json.JsonMapper
 
 @RestController
-class EmployeeController(val employeeService: EmployeeService, val jsonMapper: ObjectMapper) {
+class EmployeeController(val employeeService: EmployeeService, val jsonMapper: JsonMapper) {
 
     @GetMapping("/employees")
     fun findAll(): List<Employee> = employeeService.findAll()
