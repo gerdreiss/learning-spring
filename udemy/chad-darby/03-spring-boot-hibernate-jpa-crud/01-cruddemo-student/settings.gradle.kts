@@ -1,1 +1,1 @@
-rootProject.name = "crud-demo"
+rootProject.name = "crud-demo-student"

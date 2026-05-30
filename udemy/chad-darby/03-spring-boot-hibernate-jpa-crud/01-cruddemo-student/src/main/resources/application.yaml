@@ -1,6 +1,6 @@
 spring:
   application:
-    name: crud-demo
+    name: crud-demo-student
   main:
     banner-mode: off
   datasource:
