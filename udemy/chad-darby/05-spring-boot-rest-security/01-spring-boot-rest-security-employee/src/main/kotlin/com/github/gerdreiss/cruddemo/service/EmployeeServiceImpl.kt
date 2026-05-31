@@ -11,8 +11,8 @@ class EmployeeServiceImpl(val employeeRepository: EmployeeRepository) : Employee
     override fun findAll(): List<Employee> = employeeRepository.findAll()
     override fun findById(id: Int): Employee? = employeeRepository.findByIdOrNull(id)
     @Transactional
-    override fun save(employee: Employee): Employee? = employeeRepository.save(employee)
+    override fun save(employee: Employee): Employee = employeeRepository.save(employee)
     @Transactional
-    override fun delete(id: Int) = employeeRepository.deleteById(id)
+    override fun delete(id: Int): Unit = employeeRepository.deleteById(id)
     override fun exists(id: Int): Boolean = employeeRepository.existsById(id)
 }
