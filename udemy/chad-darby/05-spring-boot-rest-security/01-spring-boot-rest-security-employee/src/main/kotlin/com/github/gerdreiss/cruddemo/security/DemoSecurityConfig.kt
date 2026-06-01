@@ -5,34 +5,35 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.core.userdetails.User
-import org.springframework.security.provisioning.InMemoryUserDetailsManager
+import org.springframework.security.provisioning.JdbcUserDetailsManager
+import org.springframework.security.provisioning.UserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
+import javax.sql.DataSource
 
 
 @Configuration
 class DemoSecurityConfig {
 
     @Bean
-    fun inMemoryUserManager(): InMemoryUserDetailsManager =
-        InMemoryUserDetailsManager(
-            User.builder()
-                .username("john")
-                .password("{noop}test123")
-                .roles("EMPLOYEE")
-                .build(),
-            User.builder()
-                .username("mary")
-                .password("{noop}test123")
-                .roles("EMPLOYEE", "MANAGER")
-                .build(),
-            User.builder()
-                .username("susan")
-                .password("{noop}test123")
-                .roles("EMPLOYEE", "MANAGER", "ADMIN")
-                .build()
-        )
-
+    fun inMemoryUserManager(dataSource: DataSource): UserDetailsManager =
+        JdbcUserDetailsManager(dataSource)
+        //InMemoryUserDetailsManager(
+        //    User.builder()
+        //        .username("john")
+        //        .password("{noop}test123")
+        //        .roles("EMPLOYEE")
+        //        .build(),
+        //    User.builder()
+        //        .username("mary")
+        //        .password("{noop}test123")
+        //        .roles("EMPLOYEE", "MANAGER")
+        //        .build(),
+        //    User.builder()
+        //        .username("susan")
+        //        .password("{noop}test123")
+        //        .roles("EMPLOYEE", "MANAGER", "ADMIN")
+        //        .build()
+        //)
 
     @Bean
     fun securityFilterChain(httpSecurity: HttpSecurity): SecurityFilterChain? =
