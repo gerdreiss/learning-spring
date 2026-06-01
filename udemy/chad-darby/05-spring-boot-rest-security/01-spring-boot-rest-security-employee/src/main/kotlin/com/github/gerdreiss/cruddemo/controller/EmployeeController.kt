@@ -6,11 +6,10 @@ import com.github.gerdreiss.cruddemo.dto.EmployeeDTO
 import com.github.gerdreiss.cruddemo.service.EmployeeService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import tools.jackson.databind.json.JsonMapper
 import java.net.URI
 
 @RestController
-class EmployeeController(val employeeService: EmployeeService, val jsonMapper: JsonMapper) {
+class EmployeeController(val employeeService: EmployeeService) {
 
     @GetMapping("/employees")
     fun findAll(): ResponseEntity<List<EmployeeDTO>> =
@@ -44,7 +43,14 @@ class EmployeeController(val employeeService: EmployeeService, val jsonMapper: J
     fun patch(@PathVariable id: Int, @RequestBody patch: Map<String, Any>): ResponseEntity<EmployeeDTO> =
         if (patch.containsKey("id")) ResponseEntity.badRequest().build()
         else employeeService.findById(id)
-            ?.let { employeeService.save(jsonMapper.updateValue(it, patch)) }
+            ?.let {
+                it.copy(
+                    firstName = patch["firstName"] as String? ?: it.firstName,
+                    lastName = patch["lastName"] as String? ?: it.lastName,
+                    email = patch["email"] as String? ?: it.email,
+                )
+            }
+            ?.let { employeeService.save(it) }
             ?.let { ResponseEntity.ok(it.toDTO()) }
             ?: ResponseEntity.notFound().build()
 

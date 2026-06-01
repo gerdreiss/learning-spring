@@ -39,11 +39,12 @@ class DemoSecurityConfig {
         httpSecurity
             .authorizeHttpRequests {
                 it
-                    .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
-                    .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
-                    .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
-                    .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
-                    .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.GET, "/employees").hasRole("EMPLOYEE")
+                    .requestMatchers(HttpMethod.GET, "/employees/**").hasRole("EMPLOYEE")
+                    .requestMatchers(HttpMethod.POST, "/employees").hasRole("MANAGER")
+                    .requestMatchers(HttpMethod.PUT, "/employees/**").hasRole("MANAGER")
+                    .requestMatchers(HttpMethod.PATCH, "/employees/**").hasRole("MANAGER")
+                    .requestMatchers(HttpMethod.DELETE, "/employees/**").hasRole("ADMIN")
                     .anyRequest().permitAll()
             }
             // use HTTP Basic authentication
