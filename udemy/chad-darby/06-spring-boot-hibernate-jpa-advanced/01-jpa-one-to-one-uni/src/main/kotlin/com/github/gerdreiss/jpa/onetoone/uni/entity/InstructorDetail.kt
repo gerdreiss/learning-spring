@@ -4,15 +4,37 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "instructor_detail")
-data class InstructorDetail(
+class InstructorDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    val id: Int = 0,
+    private var id: Int? = null
 
     @Column(name = "youtube_channel")
-    val youtubeChannel: String,
+    private var youtubeChannel: String = ""
 
-    @Column(name = "hobby")
-    val hobby: String,
-)
+    @Column(nullable = false)
+    private var hobby: String = ""
+
+    // One-to-one with Instructor (owning side)
+    @OneToOne(
+        mappedBy = "instructorDetail",
+        cascade = [
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+        ],
+        orphanRemoval = true
+    )
+    var instructor: Instructor? = null
+
+    constructor(youtubeChannel: String, hobby: String) {
+        this.youtubeChannel = youtubeChannel
+        this.hobby = hobby
+    }
+
+    override fun toString(): String {
+        return "InstructorDetail(id=$id, youtubeChannel='$youtubeChannel', hobby='$hobby')"
+    }
+
+}
