@@ -1,3 +1,15 @@
 spring:
   application:
-    name: 01-jpa-one-to-one-uni
+    name: jpa-one-to-one-uni
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/hb-01-one-to-one-uni
+    username: springstudent
+    password: springstudent
+
+logging:
+  level:
+    root: warn
+    org.hibernate:
+      SQL: debug
