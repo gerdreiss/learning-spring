@@ -31,7 +31,7 @@ class Instructor {
             CascadeType.DETACH,
             CascadeType.REFRESH
         ],
-        fetch = FetchType.EAGER
+        fetch = FetchType.LAZY
     )
     var courses: MutableList<Course> = mutableListOf()
 

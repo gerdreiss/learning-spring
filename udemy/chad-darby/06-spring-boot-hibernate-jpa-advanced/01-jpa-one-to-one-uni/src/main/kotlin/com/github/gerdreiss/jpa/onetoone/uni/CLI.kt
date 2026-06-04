@@ -4,6 +4,7 @@ import com.github.gerdreiss.jpa.onetoone.uni.entity.Course
 import com.github.gerdreiss.jpa.onetoone.uni.entity.Instructor
 import com.github.gerdreiss.jpa.onetoone.uni.entity.InstructorDetail
 import com.github.gerdreiss.jpa.onetoone.uni.repository.CourseRepository
+import com.github.gerdreiss.jpa.onetoone.uni.repository.CustomRepository
 import com.github.gerdreiss.jpa.onetoone.uni.repository.InstructorDetailRepository
 import com.github.gerdreiss.jpa.onetoone.uni.repository.InstructorRepository
 import org.springframework.boot.CommandLineRunner
@@ -14,6 +15,7 @@ class CLI(
     val instructorRepository: InstructorRepository,
     val instructorDetailRepository: InstructorDetailRepository,
     val courseRepository: CourseRepository,
+    val customRepository: CustomRepository
 ) : CommandLineRunner {
 
     override fun run(vararg args: String) {
@@ -37,10 +39,13 @@ class CLI(
         println("Found by id: $foundById")
 
         val foundByEmail = instructorRepository.findByEmail(instructor.email)
-        val foundCourses = foundByEmail?.courses
+//        val foundCourses = foundByEmail?.courses
 
         println("Found by email: $foundByEmail")
-        println("Found courses: $foundCourses")
+//        println("Found courses: $foundCourses")
+
+        val withCourses = customRepository.findInstructorJoinFetchCoursesById(persisted.id!!)
+        println("With courses: $withCourses: [${withCourses.courses}]")
 
         courseRepository.deleteAllInBatch()
         instructorRepository.deleteAllInBatch()
