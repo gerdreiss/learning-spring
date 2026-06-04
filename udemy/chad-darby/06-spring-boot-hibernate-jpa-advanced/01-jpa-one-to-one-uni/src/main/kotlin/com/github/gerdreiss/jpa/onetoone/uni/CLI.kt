@@ -4,6 +4,7 @@ import com.github.gerdreiss.jpa.onetoone.uni.entity.Course
 import com.github.gerdreiss.jpa.onetoone.uni.entity.Instructor
 import com.github.gerdreiss.jpa.onetoone.uni.entity.InstructorDetail
 import com.github.gerdreiss.jpa.onetoone.uni.repository.CourseRepository
+import com.github.gerdreiss.jpa.onetoone.uni.repository.InstructorDetailRepository
 import com.github.gerdreiss.jpa.onetoone.uni.repository.InstructorRepository
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component
 @Component
 class CLI(
     val instructorRepository: InstructorRepository,
+    val instructorDetailRepository: InstructorDetailRepository,
     val courseRepository: CourseRepository,
 ) : CommandLineRunner {
 
@@ -42,13 +44,15 @@ class CLI(
 
         courseRepository.deleteAllInBatch()
         instructorRepository.deleteAllInBatch()
-
-        courseRepository.flush()
-        instructorRepository.flush()
+        instructorDetailRepository.deleteAllInBatch()
 
         val instructors = instructorRepository.count()
-        val courses = courseRepository.count()
         println("Instructors should be 0: $instructors")
+
+        val instructorDetails = instructorDetailRepository.count()
+        println("Instructor details should be 0: $instructorDetails")
+
+        val courses = courseRepository.count()
         println("Courses should be 0: $courses")
     }
 }
