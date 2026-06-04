@@ -2,7 +2,6 @@ package com.github.gerdreiss.jpa.onetoone.uni.entity
 
 import jakarta.persistence.*
 
-
 @Entity
 @Table(name = "instructor")
 class Instructor {
@@ -31,7 +30,8 @@ class Instructor {
             CascadeType.MERGE,
             CascadeType.DETACH,
             CascadeType.REFRESH
-        ]
+        ],
+        fetch = FetchType.EAGER
     )
     var courses: MutableList<Course> = mutableListOf()
 
@@ -45,11 +45,6 @@ class Instructor {
     fun addCourse(course: Course) {
         courses.add(course)
         course.instructor = this
-    }
-
-    fun removeCourse(course: Course) {
-        courses.remove(course)
-        course.instructor = null
     }
 
     fun setInstructorDetail(detail: InstructorDetail) {
