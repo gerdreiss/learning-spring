@@ -47,6 +47,24 @@ class CLI(
         val withCourses = customRepository.findInstructorJoinFetchCoursesById(persisted.id!!)
         println("With courses: $withCourses: [${withCourses.courses}]")
 
+        withCourses.lastName = "Tester"
+
+        instructorRepository.saveAndFlush(withCourses)
+
+        val updated = instructorRepository.findById(instructor.id!!)
+
+        println("Updated: $updated")
+
+        course1.title += ": updated"
+        withCourses.courses.clear()
+        withCourses.courses.addAll(listOf(course1, course2))
+
+        instructorRepository.save(withCourses)
+
+        val withUpdatedCourse = instructorRepository.findByEmail(instructor.email)
+
+        println("Updated course: $withUpdatedCourse [${withUpdatedCourse?.courses}]")
+
         courseRepository.deleteAllInBatch()
         instructorRepository.deleteAllInBatch()
         instructorDetailRepository.deleteAllInBatch()
